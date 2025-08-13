@@ -1,64 +1,119 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dealerships Home</title>
+
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="static/style.css">
-  <link rel="stylesheet" href="static/bootstrap.min.css">
-<script>
 
-const logout = async (e) => {
-//Include the code for logout here.
-};
+  <script>
+    const logout = async (e) => {
+      // Include the code for logout here
+    };
 
-let checkSession = ()=>{
-  let curr_user = sessionStorage.getItem("username");
+    let checkSession = () => {
+      let curr_user = sessionStorage.getItem("username");
 
-  if (curr_user && curr_user !== "") {
-    document.getElementById("loginlogout").innerHTML = 
-    '<span class="homepage_links">' + curr_user +'</span>' +
-    '<a class="homepage_links" onclick="logout()" href="/">Logout</a>'
-  } else {
-    document.getElementById("loginlogout").innerHTML = 
-    '<a class="homepage_links" href="/login">Login</a>'+
-    '<a class="homepage_links"  href="/register">Register</a>'
-  }
- }
-</script>
+      if (curr_user && curr_user !== "") {
+        document.getElementById("loginlogout").innerHTML = 
+        '<span class="homepage_links">' + curr_user + '</span>' +
+        '<a class="homepage_links ms-2" onclick="logout()" href="/">Logout</a>';
+      } else {
+        document.getElementById("loginlogout").innerHTML = 
+        '<a class="homepage_links me-2" href="/login">Login</a>'+
+        '<a class="homepage_links" href="/register">Register</a>';
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-image: url("https://images.unsplash.com/photo-1588925511374-5fb0ad0b3237?w=1920&auto=format&fit=crop&q=75");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.9); /* semi-transparent */
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    .banner h5 {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .btn-custom {
+      background-color: aqua;
+      color: black;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-custom:hover {
+      background-color: deepskyblue;
+      color: white;
+    }
+
+    .navbar-text .loginlink a {
+      color: white;
+      font-weight: bold;
+      margin-left: 13px;
+    }
+
+    nav.navbar {
+      background-color: darkturquoise !important;
+    }
+  </style>
 </head>
+
 <body onload="checkSession()">
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
-  <div class="container-fluid">
-    <h2 style="padding-right: 5%;">Dealerships</h2>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" style="font-size: larger;" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
-        </li>
-      </ul>
-      <span class="navbar-text">
-        <div class="loginlink" id="loginlogout">
-        </div>
+  <!-- Navbar (unchanged) -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <h2 style="padding-right: 5%;">Dealerships</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" style="font-size: larger;" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          <div class="loginlink" id="loginlogout"></div>
         </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Centered Card -->
+  <div class="d-flex justify-content-center align-items-center flex-grow-1">
+    <div class="card p-3" style="width: 50%; margin-top: 50px;">
+      <img src="static/car_dealership.jpg" class="card-img-top rounded" alt="Car Dealership">
+      <div class="banner">
+        <h5>Welcome to our Dealerships!</h5>
+        <a href="/dealers" class="btn btn-custom mt-3">View Dealerships</a>
+      </div>
     </div>
   </div>
-</nav>
-<div style="display: flex;flex-direction: column;">
-<div class="card" style="width: 50%;margin-top: 50px;align-self: center;">
-  <img src="static/car_dealership.jpg" class="card-img-top" alt="...">
-  <div class="banner">
-    <h5>Welcome to our Dealerships!</h5>
-    <a href="/dealers" class="btn" style="background-color: aqua;margin:10px">View Dealerships</a>
-  </div>
-</div>
-</div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
