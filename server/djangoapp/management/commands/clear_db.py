@@ -21,4 +21,6 @@ class Command(BaseCommand):
                 )
             )
         except Exception as e:
-            self.stdout.write(self.style.ERROR(f"Error clearing database: {str(e)}"))
+            self.stdout.write(
+                self.style.ERROR(f"Error clearing database: {str(e)}")
+            )

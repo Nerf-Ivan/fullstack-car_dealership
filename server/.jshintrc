@@ -1,0 +1,18 @@
+{
+  "esversion": 6,
+  "node": true,
+  "strict": "implied",
+  "undef": true,
+  "unused": true,
+  "trailing": true,
+  "smarttabs": true,
+  "globals": {
+    "console": true,
+    "module": true,
+    "require": true,
+    "exports": true,
+    "process": true,
+    "__dirname": true,
+    "__filename": true
+  }
+}

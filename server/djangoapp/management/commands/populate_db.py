@@ -9,6 +9,13 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         try:
             initiate()
-            self.stdout.write(self.style.SUCCESS("Successfully populated the database with car makes and car models"))
+            self.stdout.write(
+                self.style.SUCCESS(
+                    "Successfully populated the database with car makes and "
+                    "car models"
+                )
+            )
         except Exception as e:
-            self.stdout.write(self.style.ERROR(f"Error populating database: {str(e)}"))
+            self.stdout.write(
+                self.style.ERROR(f"Error populating database: {str(e)}")
+            )
