@@ -1,5 +1,10 @@
 {
   "devDependencies": {
-    "jshint": "^2.13.6"
+    "jshint": "2.13.4",
+    "eslint": "^8.0.0"
+  },
+  "scripts": {
+    "lint": "jshint ./server/database/*.js",
+    "lint:eslint": "eslint ./server/database/*.js --no-eslintrc --env node --parser-options '{\"ecmaVersion\": 8}'"
   }
 }

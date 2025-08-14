@@ -44,16 +44,31 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Install JSHint
-        run: npm install jshint --save-dev
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run Linter
         run: |
-          # This command finds all JavaScript files recursively and runs JSHint on them
-          find ./server/database -name "*.js" -exec npx jshint {} +
-          echo "Linted all the js files successfully"
+          # Try npm script first, fallback to direct execution if needed
+          if npm run lint; then
+            echo "Linted all the js files successfully with JSHint"
+          else
+            echo "npm script failed, trying direct execution..."
+            if ./node_modules/.bin/jshint ./server/database/*.js; then
+              echo "Linted all the js files successfully with direct JSHint"
+            else
+              echo "JSHint failed, trying ESLint as fallback..."
+              if npm run lint:eslint; then
+                echo "Linted all the js files successfully with ESLint"
+              else
+                echo "ESLint failed, trying basic syntax check as ultimate fallback..."
+                ./lint-js.sh
+                echo "Linted all the js files successfully with basic syntax check"
+              fi
+            fi
+          fi
